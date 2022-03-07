@@ -12,13 +12,13 @@
           <th>Delete</th>
         </tr>
       </thead>
-      <tbody>
-          <tr>
-            <td>{user.id}</td>
-            <td>{user.name}</td>
-            <td>{user.username}</td>
-            <td>{user.email}</td>
-            <td>{user.city}</td>
+      <tbody v-bind:users="users" v-bind:key="user.id" v-for="(user) in users">
+          <tr v-if="user">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.city}}</td>
             <td>
               <md-button href="/update">Edit</md-button>
             </td>
@@ -34,7 +34,9 @@
 <script>
 export default {
   name: "UserListTable",
-  
+  props: {
+    users: Array
+  }
 }
 </script>
 
